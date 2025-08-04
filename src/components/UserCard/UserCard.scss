@@ -1,0 +1,55 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
+.user-card {
+  background-color: $highlighted-color;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
+
+  &__main-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+
+    &--photo {
+      width: 70px;
+      height: 70px;
+      border-radius: 100px;
+    }
+
+    &--name {
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      text-align: center;
+    }
+  }
+  
+  &__contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+    &--position,
+    &--email,
+    &--phone {
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      text-align: center;
+    }
+  }
+}

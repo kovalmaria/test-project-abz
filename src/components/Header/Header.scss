@@ -1,0 +1,33 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: $highlighted-color;
+  height: 60px;
+  width: 100%;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  box-sizing: border-box;
+
+  @include content-padding-inline;
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+  }
+
+  &__nav {
+    display: flex;
+    gap: 10px;
+  }
+}

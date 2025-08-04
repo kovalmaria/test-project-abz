@@ -1,0 +1,28 @@
+@import '../../styles/variables.scss';
+
+.button {
+  height: 34px;
+  width: 100px;
+  border: none;
+  border-radius: 80px;
+  background-color: $primary-color;
+  color: $text-color;
+  cursor: pointer;
+
+  font-family: $font-main;
+  font-size: $font-size-main;
+
+  &:hover {
+    background-color: #FFE302;
+  }
+
+  &--disabled {
+    background-color: #B4B4B4;
+    color: #FFFFFFDE;
+    cursor: default;
+
+    &:hover {
+      background-color: #B4B4B4;
+    }
+  }
+}
