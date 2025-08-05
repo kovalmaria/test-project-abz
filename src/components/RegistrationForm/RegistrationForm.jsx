@@ -22,8 +22,19 @@ export const RegistrationForm = ({ onSuccess }) => {
 
 
   useEffect(() => {
-    getToken().then(setToken).catch(console.error);
-    getPositions().then(setPositions).catch(console.error);
+    const fetchData = async () => {
+      try {
+        const token = await getToken();
+        setToken(token);
+  
+        const positions = await getPositions();
+        setPositions(positions);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+  
+    fetchData();
   }, []);
 
   const handleChange = (e) => {
@@ -140,7 +151,7 @@ export const RegistrationForm = ({ onSuccess }) => {
               name="email"
               value={form.email}
               onChange={handleChange}
-              className={`registration-form__input ${form.email ? 'filled' : ''} ${errors.name ? 'error' : ''}`}
+              className={`registration-form__input ${form.email ? 'filled' : ''} ${errors.email ? 'error' : ''}`}
             /> 
             <label className="registration-form__label">Email</label>
           </div>
@@ -154,7 +165,7 @@ export const RegistrationForm = ({ onSuccess }) => {
               name="phone"
               value={form.phone}
               onChange={handleChange}
-              className={`registration-form__input ${form.phone ? 'filled' : ''} ${errors.name ? 'error' : ''}`}
+              className={`registration-form__input ${form.phone ? 'filled' : ''} ${errors.phone ? 'error' : ''}`}
             />
             <label className="registration-form__label">Phone</label>
           </div>

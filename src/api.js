@@ -1,6 +1,5 @@
 const BASE_URL = 'https://frontend-test-assignment-api.abz.agency/api/v1';
 
-// GET /users
 export async function getUsers(page = 1, count = 6) {
   const res = await fetch(`${BASE_URL}/users?page=${page}&count=${count}`);
   const data = await res.json();
@@ -12,7 +11,6 @@ export async function getUsers(page = 1, count = 6) {
   return data;
 }
 
-// GET /positions
 export async function getPositions() {
   const res = await fetch(`${BASE_URL}/positions`);
   const data = await res.json();
@@ -24,7 +22,6 @@ export async function getPositions() {
   return data.positions;
 }
 
-// GET /token
 export async function getToken() {
   const res = await fetch(`${BASE_URL}/token`);
   const data = await res.json();
@@ -36,7 +33,6 @@ export async function getToken() {
   return data.token;
 }
 
-// POST /users
 export async function postUser(userData, token) {
   const formData = new FormData();
 
