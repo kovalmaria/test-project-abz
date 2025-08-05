@@ -3,7 +3,7 @@ import { Button } from '../Button/Button';
 import { UserCard } from '../UserCard/UserCard';
 
 
-export const UserList = ({ users, page, totalPages, setPage}) => {
+export const UserList = ({ users, page, totalPages, setPage, ref }) => {
   const handleShowMore = () => {
     if (page < totalPages) {
       setPage(prev => prev + 1);
@@ -11,7 +11,7 @@ export const UserList = ({ users, page, totalPages, setPage}) => {
   };
 
   return (
-    <section className="user-list" id="users">
+    <section className="user-list" id="users" ref={ref}>
       <h1 className="user-list__title">Working with GET request</h1>
       <div className="user-list__cards">
         {users.map(user => (

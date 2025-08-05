@@ -4,7 +4,7 @@ import { getPositions, getToken, postUser } from '../../api';
 import { Button } from '../Button/Button';
 import successImage from '../../assets/success-image.png';
 
-export const RegistrationForm = ({ onSuccess }) => {
+export const RegistrationForm = ({ onSuccess, usersListRef, setIsLoading }) => {
   const [positions, setPositions] = useState([]);
   const [token, setToken] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(true);
@@ -20,22 +20,25 @@ export const RegistrationForm = ({ onSuccess }) => {
   const [fileName, setFileName] = useState('');
   const [showSuccessImage, setShowSuccessImage] = useState(false);
 
-
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const token = await getToken();
-        setToken(token);
-  
-        const positions = await getPositions();
-        setPositions(positions);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-  
     fetchData();
   }, []);
+
+  const fetchData = async () => {
+    setIsLoading(true);
+
+    try {
+      const token = await getToken();
+      setToken(token);
+
+      const positions = await getPositions();
+      setPositions(positions);
+    } catch (error) {
+      console.error(error);
+    }
+
+    setIsLoading(false);
+  };
 
   const handleChange = (e) => {
     const { name, value, files, type } = e.target;
@@ -105,6 +108,7 @@ export const RegistrationForm = ({ onSuccess }) => {
 
       setTimeout(() => {
         setShowSuccessImage(false);
+        usersListRef.current.scrollIntoView({ behavior: 'smooth' });
       }, 5000);
     } catch (err) {
       console.error(err);
@@ -113,20 +117,21 @@ export const RegistrationForm = ({ onSuccess }) => {
     }
   };
 
+  if (showSuccessImage) {
+    return (
+      <div className="registration-form__success">
+        <img
+          src={successImage}
+          alt="Success"
+          className="registration-form__success-image"
+        />
+      </div>
+    )
+  }
+
   return (
     <div className="form-container" id="signup">
       <h1 className="registration-form__title">Working with POST request</h1>
-
-      {showSuccessImage ? (
-        <div className="registration-form__success">
-          <img
-            src={successImage}
-            alt="Success"
-            className="registration-form__success-image"
-          />
-        </div>
-      ) : 
-
       <form className="registration-form" onSubmit={handleSubmit}>
   
         <div className="registration-form__field">
@@ -216,7 +221,7 @@ export const RegistrationForm = ({ onSuccess }) => {
             Sign up
           </Button>
         </div>
-      </form>}
+      </form>
   </div>
   )
 }

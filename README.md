@@ -36,3 +36,4 @@ This project is a frontend implementation for the ABZ Agency test assignment. It
 - **Custom tooltip** for truncated user fields (email, name,  position) appears only if text overflows, using custom implementation
 - **Sticky header** — a fixed header that stays at the top while scrolling. Contains navigation buttons that scroll to the users section and the registration form.
 - 💅 SCSS support with variables and responsive mixins
+- Green scores on Lighthouse and PageSpeed
