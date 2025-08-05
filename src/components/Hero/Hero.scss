@@ -2,11 +2,12 @@
 @import '../../styles/variables.scss';
 
 .hero {
-  background-image: url(../../assets/main-image.png);
+  background-image: url(../../assets/main-image.webp);
   background-size: cover;
   background-position: center;
   height: 500px;
   color: $highlighted-color;
+  
 
   display: flex;
   justify-content: center;

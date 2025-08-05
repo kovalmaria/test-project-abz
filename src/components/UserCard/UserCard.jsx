@@ -9,6 +9,7 @@ export const UserCard = ({ user }) => {
           src={user.photo}
           alt={user.name}
           className="user-card__main-info--photo"
+          loading="lazy"
         />
         <Tooltip text={user.name}/>
       </div>

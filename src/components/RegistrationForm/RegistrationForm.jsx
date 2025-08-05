@@ -148,12 +148,13 @@ export const RegistrationForm = ({ onSuccess }) => {
           <div className="registration-form__input-wrapper">
             <input
               type="email"
+              id="email"
               name="email"
               value={form.email}
               onChange={handleChange}
               className={`registration-form__input ${form.email ? 'filled' : ''} ${errors.email ? 'error' : ''}`}
             /> 
-            <label className="registration-form__label">Email</label>
+            <label htmlFor="email" className="registration-form__label">Email</label>
           </div>
           {errors.email && <span className="registration-form__error">{errors.email}</span>}
         </div>
@@ -162,12 +163,13 @@ export const RegistrationForm = ({ onSuccess }) => {
           <div className="registration-form__input-wrapper">
             <input
               type="tel"
+              id="tel"
               name="phone"
               value={form.phone}
               onChange={handleChange}
               className={`registration-form__input ${form.phone ? 'filled' : ''} ${errors.phone ? 'error' : ''}`}
             />
-            <label className="registration-form__label">Phone</label>
+            <label htmlFor='tel' className="registration-form__label">Phone</label>
           </div>
           {errors.phone ? (
             <span className="registration-form__error">{errors.phone}</span>
@@ -195,11 +197,12 @@ export const RegistrationForm = ({ onSuccess }) => {
         </fieldset>
   
         <div className="registration-form__field">
-          <label className={`registration-form__file-label ${errors.photo ? 'error' : ''}`}>
+          <label htmlFor="photo" className={`registration-form__file-label ${errors.photo ? 'error' : ''}`}>
             <span className={`registration-form__file-button ${errors.photo ? 'error' : ''}`}>Upload</span>
             <span className="registration-form__file-name">{fileName || 'Upload your photo'}</span>
             <input
               type="file"
+              id="photo"
               name="photo"
               accept="image/jpeg,image/jpg"
               onChange={handleChange}
